@@ -16,10 +16,13 @@ services:
     image: grafana/grafana-oss
     container_name: grafana
     restart: unless-stopped
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel
     ports:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
 
   prometheus:
     image: prom/prometheus
