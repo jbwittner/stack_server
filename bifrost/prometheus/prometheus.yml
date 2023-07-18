@@ -12,8 +12,6 @@ alerting:
 scrape_configs:
 - job_name: prometheus
   honor_timestamps: true
-  scrape_interval: 15s
-  scrape_timeout: 10s
   metrics_path: /metrics
   scheme: http
   static_configs:
@@ -21,11 +19,17 @@ scrape_configs:
     - localhost:9090
 - job_name: server_metrics
   honor_timestamps: true
-  scrape_interval: 15s
-  scrape_timeout: 10s
   metrics_path: /metrics
   scheme: http
   static_configs:
   - targets:
     - bifrost:9200
     - asgard:9200
+- job_name: docker_metrics
+  honor_timestamps: true
+  metrics_path: /metrics
+  scheme: http
+  static_configs:
+  - targets:
+    - bifrost:9323
+    - asgard:9323
