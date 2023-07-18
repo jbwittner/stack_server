@@ -19,7 +19,7 @@ scrape_configs:
   static_configs:
   - targets:
     - localhost:9090
-- job_name: bifrost
+- job_name: server_metrics
   honor_timestamps: true
   scrape_interval: 15s
   scrape_timeout: 10s
@@ -28,3 +28,4 @@ scrape_configs:
   static_configs:
   - targets:
     - bifrost:9200
+    - asgard:9200
