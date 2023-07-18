@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   portainer:
     image: portainer/portainer-ce:alpine
@@ -8,7 +10,18 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainer_data:/data"
-    restart: always
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana_data:/var/lib/grafana
+
 
 volumes:
   portainer_data:
+  grafana_data:
