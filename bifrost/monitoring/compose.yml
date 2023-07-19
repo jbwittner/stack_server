@@ -1,17 +1,6 @@
 version: "3.8"
 
 services:
-  portainer:
-    image: portainer/portainer-ce:alpine
-    container_name: portainer
-    command: -H unix:///var/run/docker.sock
-    ports:
-      - "9000:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "portainer_data:/data"
-    restart: unless-stopped
-
   grafana:
     image: grafana/grafana-oss
     container_name: grafana
@@ -22,8 +11,6 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
-
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -36,8 +23,6 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus_data:/prometheus
-
 volumes:
-  portainer_data:
   grafana_data:
   prometheus_data:
