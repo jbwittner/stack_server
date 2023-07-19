@@ -21,7 +21,7 @@ services:
       - 9090:9090
     restart: unless-stopped
     volumes:
-      - ./prometheus:/etc/prometheus
+      - ~/docker/stack_server/bifrost/monitoring/prometheus:/etc/prometheus
       - prometheus_data:/prometheus
 volumes:
   grafana_data:
