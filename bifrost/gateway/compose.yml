@@ -3,6 +3,7 @@ version: "3.8"
 services:
   web:
     image: nginx
+    container_name: nginx
     volumes:
     - /etc/docker_stack/stack_server/bifrost/gateway/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
