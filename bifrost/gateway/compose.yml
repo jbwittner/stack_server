@@ -20,4 +20,4 @@ networks:
   internal-nginx-pod:
     internal: true
   external-nginx-pod:
-    internal: true
+    internal: false
