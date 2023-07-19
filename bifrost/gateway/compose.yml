@@ -15,6 +15,9 @@ services:
     - NGINX_PORT=80
     networks:
       - internal-nginx-pod
+      - external-nginx-pod
 networks:
   internal-nginx-pod:
+    internal: true
+  external-nginx-pod:
     internal: true
