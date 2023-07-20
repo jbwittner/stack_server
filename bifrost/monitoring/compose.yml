@@ -7,6 +7,8 @@ services:
     restart: unless-stopped
     environment:
       - GF_INSTALL_PLUGINS=grafana-clock-panel
+    expose:
+      - 3000
     volumes:
       - grafana_data:/var/lib/grafana
     networks:
@@ -15,6 +17,8 @@ services:
     image: grafana/loki:2.8.0
     container_name: loki
     command: -config.file=/etc/loki/local-config.yaml
+    expose:
+      - 3100
     networks:
       - internal-grafana-pod
   prometheus:
@@ -24,6 +28,8 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-admin-api'
     restart: unless-stopped
+    expose:
+      - 3090
     volumes:
       - /etc/docker_stack/stack_server/bifrost/monitoring/prometheus:/etc/prometheus
       - prometheus_data:/prometheus
