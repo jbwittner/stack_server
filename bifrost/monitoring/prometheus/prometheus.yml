@@ -23,12 +23,12 @@ scrape_configs:
   scheme: http
   static_configs:
   - targets:
-    - bifrost:9200
-    - asgard:9200
+    - 192.168.1.39:9200
+    - 192.168.1.18:9200
 - job_name: docker_metrics
   honor_timestamps: true
   scheme: http
   static_configs:
   - targets:
-    - bifrost:9323
-    - asgard:9323
+    - 192.168.1.39:9323
+    - 192.168.1.18:9323
