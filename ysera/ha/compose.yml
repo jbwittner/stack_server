@@ -4,7 +4,7 @@ services:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
     environment:
-      - DISABLE_JEMALLOC: true
+      DISABLE_JEMALLOC: true
     volumes:
       - /data/ha/config:/config
       - /etc/localtime:/etc/localtime:ro
