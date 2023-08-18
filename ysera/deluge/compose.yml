@@ -16,3 +16,12 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+  joal:
+    image: anthonyraymond/joal:2.1.34
+    container_name: joal
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    ports:
+      - 8099:8099
+    command: ["--joal-conf=/data", "--spring.main.web-environment=true", "--server.port=8099", "--joal.ui.path.prefix=secretjoalpath", "--joal.ui.secret-token=VrcrLxNnstTkAZKfwsH2qnt9K"]
