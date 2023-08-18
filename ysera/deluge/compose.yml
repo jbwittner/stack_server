@@ -1,18 +1,18 @@
 version: '3'
 services:
-  deluge:
-    image: lscr.io/linuxserver/deluge:latest
-    container_name: deluge
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - DELUGE_LOGLEVEL=error #optional
+      - WEBUI_PORT=8080
     volumes:
-      - ./config:/config
-      - ./downloads:/downloads
+      - /var/qbittorrent/config:/config
+      - /var/qbittorrent/downloads:/downloads
     ports:
-      - 8112:8112
+      - 8080:8080
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
