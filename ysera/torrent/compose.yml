@@ -29,7 +29,12 @@ services:
     ports:
       - 8080:8080
       - 51820:51820/udp
+    networks:
+      - mynetwork
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv6.conf.all.disable_ipv6=0 # for raspberry pi compatibility?
     restart: unless-stopped
+networks:
+  mynetwork:                                 
+    external: true
