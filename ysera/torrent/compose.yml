@@ -37,7 +37,7 @@ services:
     links:
       - services:qbittorrent # This is important also
     depends_on:
-      - torrent
+      - qbittorrent
     ports:
       - 80:80
       - 443:443
