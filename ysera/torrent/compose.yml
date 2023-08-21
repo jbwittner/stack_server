@@ -9,8 +9,8 @@ services:
       - TZ=Etc/UTC
       - WEBUI_PORT=8080
     volumes:
-      - /var/docker_config/torrent/config:/config
-      - /var/docker_config/torrent/downloads:/downloads
+      - /var/docker_config/torrent/qbittorrent/config:/config
+      - /var/docker_config/torrent/qbittorrent/downloads:/downloads
     restart: unless-stopped
     network_mode: service:wireguard
   wireguard:
@@ -24,7 +24,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - /var/docker_config/torrent/config:/config
+      - /var/docker_config/torrent/wireguard/config:/config
       - /lib/modules:/lib/modules
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
