@@ -1,5 +1,5 @@
 version: '3'
-torrent:
+services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -12,7 +12,7 @@ torrent:
       - /var/docker_config/torrent/config:/config
       - /var/docker_config/torrent/downloads:/downloads
     restart: unless-stopped
-    network_mode: torrent:wireguard
+    network_mode: services:wireguard
   wireguard:
     image: lscr.io/linuxserver/wireguard:latest
     container_name: wireguard
@@ -37,7 +37,7 @@ torrent:
     container_name: nginx
     image: nginx
     links:
-      - torrent:qbittorrent # This is important also
+      - services:qbittorrent # This is important also
     depends_on:
       - torrent
     ports:
