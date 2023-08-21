@@ -35,7 +35,7 @@ services:
     container_name: nginx
     image: nginx
     links:
-      - services:qbittorrent # This is important also
+      - qbittorrent # This is important also
     depends_on:
       - qbittorrent
     ports:
