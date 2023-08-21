@@ -12,7 +12,7 @@ services:
       - /var/docker_config/torrent/config:/config
       - /var/docker_config/torrent/downloads:/downloads
     restart: unless-stopped
-    network_mode: services:wireguard
+    network_mode: service:wireguard
   wireguard:
     image: lscr.io/linuxserver/wireguard:latest
     container_name: wireguard
