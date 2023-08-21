@@ -12,7 +12,6 @@ services:
       - /var/docker_config/torrent/qbittorrent/config:/config
       - /var/docker_config/torrent/qbittorrent/downloads:/downloads
     restart: unless-stopped
-    network_mode: service:vpn
   vpn:
     image: lscr.io/linuxserver/wireguard:latest
     container_name: wireguard
@@ -26,22 +25,9 @@ services:
     volumes:
       - /var/docker_config/torrent/wireguard/config:/config
       - /lib/modules:/lib/modules
+    ports:
+      - 8080:8080
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv6.conf.all.disable_ipv6=0 # for raspberry pi compatibility?
-    restart: unless-stopped
-  web:
-    # https://registry.hub.docker.com/_/nginx/
-    container_name: nginx
-    image: nginx
-    links:
-      - vpn:torrent # This is important also
-    depends_on:
-      - torrent
-    ports:
-      - 80:80
-      - 443:443
-      - 8080:8080
-    volumes:
-      - /var/docker_config/torrent/nginx:/etc/nginx/conf.d
     restart: unless-stopped
