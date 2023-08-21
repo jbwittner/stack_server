@@ -41,6 +41,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 8080:8080
     volumes:
       - /var/docker_config/torrent/nginx:/etc/nginx/conf.d
     restart: unless-stopped
