@@ -8,11 +8,11 @@ services:
     restart: always
     volumes:
       - firefly_iii_upload:/var/www/html/storage/upload
-    env_file: /var/docker_config/firefly/env/.env
+    env_file: /var/docker_config/firefly/env/firefly.env
     networks:
       - firefly_iii
     ports:
-      - 8080:8080
+      - 8090:8080
     depends_on:
       - db
   db:
@@ -20,7 +20,7 @@ services:
     hostname: db
     container_name: firefly_iii_db
     restart: always
-    env_file: /var/docker_config/firefly/env/.db.env
+    env_file: /var/docker_config/firefly/env/db.env
     networks:
       - firefly_iii
     volumes:
