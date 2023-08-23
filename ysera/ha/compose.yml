@@ -6,7 +6,7 @@ services:
     environment:
       DISABLE_JEMALLOC: true
     volumes:
-      - /data/ha/config:/config
+      - /var/docker_config/ha/homeassistant/config:/config
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     privileged: true

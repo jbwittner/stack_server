@@ -1,21 +1,21 @@
-version: '3'
+version: '3.3'
 services:
-  torrent:
+  transmission-openvpn:
     cap_add:
-            - NET_ADMIN
-        volumes:
-            - /var/docker_config/torrent/transmission/data:/data
-            - /var/docker_config/torrent/transmission/config:/config
-        environment:
-            - OPENVPN_PROVIDER=PIA
-            - OPENVPN_CONFIG=france
-            - OPENVPN_USERNAME=user
-            - OPENVPN_PASSWORD=pass
-            - LOCAL_NETWORK=192.168.0.0/16
-        logging:
-            driver: json-file
-            options:
-                max-size: 10m
-        ports:
-            - '9091:9091'
-        image: haugene/transmission-openvpn
+      - NET_ADMIN
+    volumes:
+      - '/your/storage/path/:/data'
+      - '/your/config/path/:/config'
+    environment:
+      - OPENVPN_PROVIDER=PIA
+      - OPENVPN_CONFIG=france
+      - OPENVPN_USERNAME=user
+      - OPENVPN_PASSWORD=pass
+      - LOCAL_NETWORK=192.168.0.0/16
+    logging:
+    driver: json-file
+    options:
+      max-size: 10m
+    ports:
+      - '9091:9091'
+    image: haugene/transmission-openvpn
